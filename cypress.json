@@ -1,0 +1,9 @@
+{
+  "baseUrl": "https://d-partner-portal.cengage.com",
+  "fixturesFolder": "e2e/fixtures",
+  "integrationFolder": "e2e/integration",
+  "pluginsFile": "e2e/plugins/index.js",
+  "supportFile": "e2e/support/index.ts",
+  "chromeWebSecurity": false,
+  "video": false
+}

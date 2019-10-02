@@ -1,0 +1,35 @@
+{
+  "name": "cypress-portal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "e2e:open": "cypress open",
+    "e2e:run": "cypress run --browser chrome"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KaterynaTymchenko/Cypress-Portal.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KaterynaTymchenko/Cypress-Portal/issues"
+  },
+  "homepage": "https://github.com/KaterynaTymchenko/Cypress-Portal#readme",
+  "dependencies": {
+    "@types/node": "^12.7.9",
+    "dotenv": "^6.2.0"
+  },
+  "devDependencies": {
+    "@cypress/webpack-preprocessor": "^4.1.0",
+    "@typescript-eslint/eslint-plugin": "^1.13.0",
+    "@typescript-eslint/parser": "^1.13.0",
+    "babel-eslint": "^10.0.3",
+    "cypress": "^3.4.1",
+    "eslint": "^5.16.0",
+    "ts-loader": "^5.4.5",
+    "typescript": "^3.6.3",
+    "webpack": "^4.41.0"
+  }
+}
