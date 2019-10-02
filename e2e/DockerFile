@@ -1,0 +1,41 @@
+FROM cypress/browsers:chrome69
+
+ENV CI=true
+
+RUN node -v
+RUN npm -v
+
+# Copy package.jsons and loc files first to make sure they cached if dependencies doesn`t changed
+COPY ./package*.json lerna.json ./app/
+RUN cd app && npm install
+
+# Copy internal package.jsons
+COPY ./sdk/package*.json ./app/sdk/
+COPY ./client/package*.json ./app/client/
+COPY ./server/db/package*.json ./app/server/db/
+COPY ./server/api/package*.json ./app/server/api/
+COPY ./server/business-logic/package*.json ./app/server/business-logic/
+
+# Install deps and symlink all packages together
+RUN cd app && npx lerna bootstrap
+
+# Copy application code
+COPY . ./app
+WORKDIR ./app
+
+RUN ls -a
+
+# Build all packages
+RUN npm run build
+
+COPY .env ./build/.env
+
+# Install dependencies in build folder
+WORKDIR ./build
+
+RUN npm install --production
+RUN npx lerna bootstrap
+RUN npm run db:migrate
+
+EXPOSE 3333
+
